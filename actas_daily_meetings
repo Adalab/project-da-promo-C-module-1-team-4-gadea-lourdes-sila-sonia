@@ -1,0 +1,27 @@
+ACTAS DAILY MEETINGS
+
+07/11/2022
+Reparto de historias de usuario que debemos subir al tablaro kanban en el cuadrante Backlog.
+Gadea: 1-7 (incluidas) Lourdes: 8-14 (incluidas) Sila: 15-21 (incluidas) Sonia: 22-28 (incluidas)
+
+
+08/11/2022
+Lourdes no pudo estar. Terminar tablero kanban. Revisar objetivos del proyecto.
+
+
+10/11/2022
+Pruebas de creación de base de datos y pruebas con fichero sql con datos que nos han dado. 
+Repartir historias de usuario del proyecto para ver en detalle cómo hacerlas y explicar a compañeras.
+
+
+11/11/2022
+· Ver en detalle historia de usuario 1.
+· Hemos cambiado el nombre del repositorio --> hay que borrar el repositorio antiguo y clonarse de nuevo el repositorio cada una en su ordenador.
+· Hemos creado un fichero .sql llamado sql_code.sql que contiene los comando donde:
+         · Hemos creado la base de datos projecto1.
+         · Hemos creado la tabla en MySQL Workbench para el fichero sql .
+         · Hemos creado la tabla en MySQL Workbench para el fichero xml .
+         · Hemos creado la tabla en MySQL Workbench para el fichero txt .
+
+
+next daily- 14/11/2022
