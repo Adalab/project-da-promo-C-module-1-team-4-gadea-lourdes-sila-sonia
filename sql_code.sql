@@ -1,0 +1,76 @@
+CREATE SCHEMA IF NOT EXISTS project1
+;
+
+USE project1
+;
+
+CREATE TABLE data_sql(
+index_sql INT PRIMARY KEY,
+q10_part_1 VARCHAR (300),
+q10_part_2 VARCHAR (300),
+q10_part_3 VARCHAR (300),
+q10_part_4 VARCHAR (300),
+q10_part_5 VARCHAR (300),
+q10_part_6 VARCHAR (300),
+q10_part_7 VARCHAR (300),
+q10_part_8 VARCHAR (300),
+q10_part_9 VARCHAR (300),
+q10_patr_10 VARCHAR (300),
+q10_part_11 VARCHAR (300),
+q10_part_12 VARCHAR (300),
+q10_part_13 VARCHAR (300),
+q10_part_14 VARCHAR (300),
+q10_part_15 VARCHAR (300),
+q10_part_16 VARCHAR (300),
+q10_other VARCHAR (300),
+d482xta VARCHAR (300)
+)
+;
+
+CREATE TABLE data_xml(
+index_xml INT PRIMARY KEY,
+`time` VARCHAR(300),
+age VARCHAR(300),
+gender VARCHAR(300),
+index_sql INT,
+CONSTRAINT fk_index_sql
+	FOREIGN KEY (index_sql)
+REFERENCES data_sql(index_sql)
+	ON UPDATE CASCADE)
+;
+
+CREATE TABLE data_txt(
+index_txt INT PRIMARY KEY,
+index_sql INT,
+q3 VARCHAR (300),
+q4 VARCHAR (300),
+q5 VARCHAR (300),
+q6 VARCHAR (300),
+q7 VARCHAR (300),
+q8 VARCHAR (300),
+q9 VARCHAR (300),
+q11 VARCHAR (300),
+q12 VARCHAR (300),
+q13 VARCHAR (300),
+q14 VARCHAR (300),
+q15 VARCHAR (300),
+q16 VARCHAR (300),
+q17 VARCHAR (300),
+q20 VARCHAR (300),
+q21 VARCHAR (300),
+q22 VARCHAR (300),
+q23 VARCHAR (300),
+q24 VARCHAR (300),
+q25 VARCHAR (300),
+q26 VARCHAR (300),
+q32 VARCHAR (300),
+q33 VARCHAR (300),
+q34 VARCHAR (300),
+q35 VARCHAR (300),
+q41 VARCHAR (300),
+CONSTRAINT fk_index_sql2
+	FOREIGN KEY (index_sql)
+REFERENCES data_sql(index_sql)
+	ON UPDATE CASCADE)
+;
+
