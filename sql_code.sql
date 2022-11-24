@@ -1,3 +1,61 @@
+/*
+## Creación de la Base de Datos y sus tablas
+El Product Owner (de ahora en adelante, P.O.) nos hace llegar tres archivos (.xml, .txt y .sql) con
+ el objetivo de fusionarlos en una única base de datos. Para ello, será necesario elaborar un programa que facilite la legibilidad de los datos tal y como nos solicita el P.O., además de automatizar el proceso de limpieza para futuros inputs que lleguen a la base de datos, y los relacione entre ellos.
+
+### Características de la Base de Datos
+En un fichero .sql (sql_code.sql) comenzamos este proyecto con la creación de la base de datos "project1"
+ donde se agregará la información de los tres ficheros que nos facita el P.O. en diferentes tablas. Para
+ ello, es necesario crear una tabla para cada fichero en MySQL Workbench ("data_sql", "data_xml", "data_txt").
+
+Las especificaciones que deben cumplir las tablas son:
+- "data_sql": debe almacenar los datos del archivo data_sql.sql. Debe ser la tabla madre, donde la clave
+	primaria es de tipo numérico y se corresponde con la columna "index_sql". El resto de columnas son de tipo texto.
+- "data_xml": debe almacenar los datos del archivo data_xml.xml. Su clave primaria es "index_xml" y su
+	clave foránea es la columna "index_sql", ambas de tipo numérico. El resto de columnas son de tipo texto.
+- "data_txt": debe almacenar los datos del archivo data_txt.txt. Su clave primaria es "index_txt" y su
+	clave foránea es la columna "index_sql", ambas de tipo numérico. El resto de columnas son de tipo texto.
+
+Las tres tablas se relacionarán mediante la columna "index_sql".
+Para la creación de las tablas observamos previamente el contenido de las columnas para ajustar las
+ características de la columna al tipo de dato que va a contener.
+*/
+
+/*
+## Lectura y explicación de la estructura del archivo .sql
+El Product Owner (de ahora en adelante, P.O.) nos hace llegar tres archivos (.xml, .txt y .sql) con el objetivo
+ de fusionarlos en una única base de datos. Para ello, será necesario elaborar un programa que facilite la
+ legibilidad de los datos tal y como nos solicita el P.O., además de automatizar el proceso de limpieza para
+ futuros inputs que lleguen a la base de datos.
+
+### Características del archivo .sql
+Uno de los ficheros que recibimos es un archivo .sql (data_sql.sql). Después de una primera visualización
+ del documento en MySQl Workbench encontramos:
+
+- Al principio del fichero, vemos las características del archivo, que no son necesarias para los objetivos
+	del proyecto.
+- A partir de la línea 24 de este archivo, observamos una serie de datos dispuestos de tal manera que se
+	puede apreciar que es una tabla.
+- Con relación a la estructura de los datos, se puede apreciar que las filas de la futura tabla están
+	organizados dentro de paréntesis. A su vez, dentro de cada paréntesis, vemos la division de columnas
+	por comas (",").
+- Llama la atención el gran número de "errores" que hay registrados.
+- Se evidencia que el nombre de las columnas no está disponible en este archivo.
+- Al principio de cada línea se observan un número que corresponderá a los "indices_sql". Estos índices
+	relacionan cada fila del archivo .sql con la fila del mismo índice en el archivo .xml y el archivo .txt.
+- Por otra parte, estos registros presentan los datos para una columna que el P.O. nos ha pedido que eliminemos
+	(d482xta).
+
+### Limpieza del archivo .sql
+Una vez observado todo lo tratado en el apartado anterior, procedemos a trabajar con el archivo .sql en
+ MySQL Workbench. Para ello hemos de tener en cuenta los requerimientos del P.O.:
+- Cambiar los "ERROR" por "NULL".
+- Quitar la columna d482xta.
+
+Al tomar los datos a introducir del apartado "VALUES" del archivo .sql, observamos que se insertan
+ correctamente en la tabla "data_sql" creada en la base de datos project1.
+*/
+
 /*Para empezar con el proyecto, primero creamos la base de datos*/
 CREATE SCHEMA IF NOT EXISTS project1
 ;
@@ -43,40 +101,42 @@ REFERENCES data_sql(index_sql)
 ;
 
 CREATE TABLE data_txt(
-index_txt INT PRIMARY KEY,
+index_txt INT AUTO_INCREMENT PRIMARY KEY,
 index_sql INT,
-q3 VARCHAR (300),
-q4 VARCHAR (300),
-q5 VARCHAR (300),
-q6 VARCHAR (300),
-q7 VARCHAR (300),
-q8 VARCHAR (300),
-q9 VARCHAR (300),
-q11 VARCHAR (300),
-q12 VARCHAR (300),
-q13 VARCHAR (300),
-q14 VARCHAR (300),
-q15 VARCHAR (300),
-q16 VARCHAR (300),
-q17 VARCHAR (300),
-q20 VARCHAR (300),
-q21 VARCHAR (300),
-q22 VARCHAR (300),
-q23 VARCHAR (300),
-q24 VARCHAR (300),
-q25 VARCHAR (300),
-q26 VARCHAR (300),
-q32 VARCHAR (300),
-q33 VARCHAR (300),
-q34 VARCHAR (300),
-q35 VARCHAR (300),
-q41 VARCHAR (300),
-CONSTRAINT fk_index_sql2
+q3 VARCHAR (500),
+q4 VARCHAR (500),
+q5 VARCHAR (500),
+q6 VARCHAR (500),
+q7 VARCHAR (500),
+q8 VARCHAR (500),
+q9 VARCHAR (500),
+q11 VARCHAR (500),
+q12 VARCHAR (500),
+q13 VARCHAR (500),
+q14 VARCHAR (500),
+q15 VARCHAR (500),
+q16 VARCHAR (500),
+q17 VARCHAR (1000),
+q20 VARCHAR (500),
+q21 VARCHAR (500),
+q22 VARCHAR (500),
+q23 VARCHAR (500),
+q24 VARCHAR (1000),
+q25 VARCHAR (500),
+q26 VARCHAR (500),
+q32 VARCHAR (1000),
+q33 VARCHAR (500),
+q34 VARCHAR (1000),
+q35 VARCHAR (500),
+q41 VARCHAR (500)
+)
+;
+/*AÑADIR
+,CONSTRAINT fk_index_sql2
 	FOREIGN KEY (index_sql)
 REFERENCES data_sql(index_sql)
-	ON UPDATE CASCADE)
-;
-
+	ON UPDATE CASCADE
+*/
 
 /*Ahora introducimos los datos del archivo sql a la tabla data_sql*/
 INSERT INTO data_sql (index_sql, q10_part_1, q10_part_2, q10_part_3, q10_part_4, q10_part_5, q10_part_6, q10_part_7, q10_part_8, q10_part_9, q10_part_10, q10_part_11, q10_part_12, q10_part_13, q10_part_14, q10_part_15, q10_part_16, q10_other, d482xta)
