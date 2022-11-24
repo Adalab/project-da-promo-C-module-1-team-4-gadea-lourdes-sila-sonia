@@ -123,6 +123,9 @@ venv.bak/
 # mypy
 .mypy_cache/
 .dmypy.json
+
+# Ficheros incluidos en .gitignore por falta de esapcio en GitHub
+/txt_code.ipynb
 dmypy.json
 
 # Pyre type checker
