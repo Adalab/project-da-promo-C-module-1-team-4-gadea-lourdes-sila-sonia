@@ -1,0 +1,20 @@
+## Creación de la Base de Datos y sus tablas
+El Product Owner (de ahora en adelante, P.O.) nos hace llegar tres archivos (.xml, .txt y .sql) con el objetivo de fusionarlos en una única base de datos. Para ello, será necesario elaborar un programa que facilite la legibilidad de los datos tal y como nos solicita el P.O., además de automatizar el proceso de limpieza para futuros inputs que lleguen a la base de datos, y los relacione entre ellos.
+
+### Características de la Base de Datos
+En un fichero .sql (sql_code.sql) comenzamos este proyecto con la creación de la base de datos "project1" donde se agregará la información de los tres ficheros que nos facita el P.O. en diferentes tablas. Para ello, es necesario crear una tabla para cada fichero en MySQL Workbench ("data_sql", "data_xml", "data_txt").
+
+Las especificaciones que deben cumplir las tablas son:
+
+- "data_sql": debe almacenar los datos del archivo data_sql.sql. Debe ser la tabla madre, donde la clave primaria es de tipo numérico y se corresponde con la columna "index_sql". El resto de columnas son de tipo texto.
+
+- "data_xml": debe almacenar los datos del archivo data_xml.xml. Su clave primaria es "index_xml" y su clave foránea es la columna "index_sql", ambas de tipo numérico. El resto de columnas son de tipo texto.
+
+- "data_txt": debe almacenar los datos del archivo data_txt.txt. Su clave primaria es "index_txt" y su clave foránea es la columna "index_sql", ambas de tipo numérico. El resto de columnas son de tipo texto.
+
+Las tres tablas se relacionarán mediante la columna "index_sql".
+
+
+
+
+
