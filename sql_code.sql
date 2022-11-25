@@ -56,6 +56,7 @@ Al tomar los datos a introducir del apartado "VALUES" del archivo .sql, observam
  correctamente en la tabla "data_sql" creada en la base de datos project1.
 */
 
+
 /*Para empezar con el proyecto, primero creamos la base de datos*/
 CREATE SCHEMA IF NOT EXISTS project1
 ;
@@ -89,7 +90,7 @@ d482xta VARCHAR (300)
 ;
 
 CREATE TABLE data_xml(
-index_xml INT PRIMARY KEY,
+index_xml INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 `time` VARCHAR(300),
 age VARCHAR(300),
 gender VARCHAR(300),
