@@ -56,7 +56,6 @@ Al tomar los datos a introducir del apartado "VALUES" del archivo .sql, observam
  correctamente en la tabla "data_sql" creada en la base de datos project1.
 */
 
-
 /*Para empezar con el proyecto, primero creamos la base de datos*/
 CREATE SCHEMA IF NOT EXISTS project1
 ;
@@ -85,23 +84,20 @@ q10_part_14 VARCHAR (300),
 q10_part_15 VARCHAR (300),
 q10_part_16 VARCHAR (300),
 q10_other VARCHAR (300),
-d482xta VARCHAR (300)
-)
-;
+d482xta VARCHAR (300));
 
-CREATE TABLE data_xml(
-index_xml INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS data_xml(
+index_xml INT AUTO_INCREMENT PRIMARY KEY,
 `time` VARCHAR(300),
 age VARCHAR(300),
 gender VARCHAR(300),
 index_sql INT,
 CONSTRAINT fk_index_sql
 	FOREIGN KEY (index_sql)
-REFERENCES data_sql(index_sql)
-	ON UPDATE CASCADE)
-;
+	REFERENCES data_sql(index_sql)
+	ON UPDATE CASCADE);
 
-CREATE TABLE data_txt(
+CREATE TABLE IF NOT EXISTS data_txt(
 index_txt INT AUTO_INCREMENT PRIMARY KEY,
 index_sql INT,
 q3 VARCHAR (500),
@@ -129,15 +125,19 @@ q32 VARCHAR (1000),
 q33 VARCHAR (500),
 q34 VARCHAR (1000),
 q35 VARCHAR (500),
-q41 VARCHAR (500)
-)
-;
-/*AÑADIR
-,CONSTRAINT fk_index_sql2
-	FOREIGN KEY (index_sql)
-REFERENCES data_sql(index_sql)
-	ON UPDATE CASCADE
-*/
+q41 VARCHAR (500));
+
+/*Debido a problemas con las Constraint, hubo que esperar a poner la restricción tras ingresar
+ los datos desde python en la tabla data_txt. por tanto ponemos ahora la restricción*/
+ALTER TABLE data_txt
+ADD CONSTRAINT fk_index_sql2 
+    FOREIGN KEY (index_sql) 
+    REFERENCES data_sql (index_sql)
+	ON UPDATE CASCADE;
+/*Debido a que MySQL daba problemas para agregar la restricción, ponemos esto para que
+ durante la sesión nos permita poner la FOREIGN KEY*/
+SET FOREIGN_KEY_CHECKS=0;
+
 
 /*Ahora introducimos los datos del archivo sql a la tabla data_sql*/
 INSERT INTO data_sql (index_sql, q10_part_1, q10_part_2, q10_part_3, q10_part_4, q10_part_5, q10_part_6, q10_part_7, q10_part_8, q10_part_9, q10_part_10, q10_part_11, q10_part_12, q10_part_13, q10_part_14, q10_part_15, q10_part_16, q10_other, d482xta)
@@ -234,4 +234,3 @@ UPDATE data_sql
 SET q10_other=NULL
 WHERE q10_other='ERROR';
 
-/*Quitamos tambien los None??*/
